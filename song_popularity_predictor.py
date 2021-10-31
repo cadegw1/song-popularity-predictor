@@ -1,22 +1,20 @@
 # Aritifical Intelligence CSC-4444
 # Team 7 - Song Popularity Predictor
-import h5py
 import os
-import requests
 import numpy as np
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyOAuth
 
-
-client_id = os.environ['CLIENT_ID']
-client_secret = os.environ['CLIENT_SECRET']
-
-
-def authenticate():
-    pass
+CLIENT_ID = os.environ['SPOTIPY_CLIENT_ID']
+CLIENT_SECRET = os.environ['SPOTIPY_CLIENT_SECRET']
+REDIRECT_URI = os.environ['SPOTIPY_REDIRECT_URI']
 
 
 if __name__ == '__main__':
-    pass
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
+                                                   client_secret=CLIENT_SECRET,
+                                                   redirect_uri=REDIRECT_URI,
+                                                   scope='user-library-read'))
+    print(sp.current_user())
 
 
