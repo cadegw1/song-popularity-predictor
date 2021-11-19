@@ -12,7 +12,7 @@ training = df.sample(frac=0.8, random_state=420)
 X_train = training[features]
 y_train = training['popularity']
 X_test = df.drop(training.index)[features]
-X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.2, random_state=420)
+X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.33, random_state=42)
 # LR_Model = LogisticRegression()
 # LR_Model.fit(X_train, y_train)
 # LR_Predict = LR_Model.predict(X_valid)
