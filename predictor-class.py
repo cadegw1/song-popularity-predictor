@@ -6,9 +6,6 @@ import time
 
 CLIENT_ID = os.environ['SPOTIPY_CLIENT_ID']
 CLIENT_SECRET = os.environ['SPOTIPY_CLIENT_SECRET']
-FEATURES = ["acousticness", "danceability", "duration_ms", "energy", "instrumentalness","liveness", "speechiness",
-            "tempo", "valence"]
-META = ['name', 'album', 'artist', 'release_date', 'length', 'popularity']
 
 
 class SongProbabilityPredictor:
@@ -31,7 +28,7 @@ class SongProbabilityPredictor:
             self.show_tracks(tracks, ids)
         return ids
 
-    def get_track_features(self, id, meta=META, features=FEATURES):
+    def get_track_features(self, id):
         meta = self.client.track(id)
         features = self.client.audio_features(id)
 
@@ -54,9 +51,8 @@ class SongProbabilityPredictor:
         tempo = features[0]['tempo']
         time_signature = features[0]['time_signature']
 
-        track = [name, album, artist, release_date, length, popularity, danceability, acousticness, danceability,
-                 energy,
-                 instrumentalness, liveness, loudness, speechiness, tempo, time_signature]
+        track = [name, album, artist, release_date, length, popularity, danceability, acousticness,
+                 energy, instrumentalness, liveness, loudness, speechiness, tempo, time_signature]
         return track
 
     def generate_dataset(self, size, ids, csv_name="dataset.csv"):
