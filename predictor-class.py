@@ -72,3 +72,8 @@ class SongProbabilityPredictor:
         # using pandas, write out dataset to .csv file
         dataset.to_csv(csv_name, sep=',')
 
+    def get_song_features(self, artist, track):
+        track = self.client.search(q='artist:' + artist + ' track:' + track, type='track')
+        track_id = track['tracks']['items'][0]['id']
+        return self.get_track_features(track_id)
+
