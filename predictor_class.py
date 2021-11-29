@@ -8,7 +8,7 @@ CLIENT_ID = os.environ['SPOTIPY_CLIENT_ID']
 CLIENT_SECRET = os.environ['SPOTIPY_CLIENT_SECRET']
 
 
-class SongProbabilityPredictor:
+class SongPopularityPredictor:
     def __init__(self):
         client_credentials_manager = SpotifyClientCredentials(CLIENT_ID, CLIENT_SECRET)
         self.client = sp.Spotify(client_credentials_manager=client_credentials_manager)
@@ -17,6 +17,7 @@ class SongProbabilityPredictor:
         for i, item in enumerate(tracks['items']):
             track = item['track']
             ids.append(track['id'])
+        return ids
 
     def get_track_ids(self, user, playlist_id):
         ids = []
