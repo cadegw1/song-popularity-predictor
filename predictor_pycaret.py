@@ -18,13 +18,15 @@ def segment_dataset(data, random=False):
         test = data.sample(n=TEST_SIZE)
     return sample, test
 
-
 # create, train, and test network
-def predict(train_data, test_data, target='popularity', regression_alg='dt'):
+def network(train_data, target, regression_alg='dt'):
     setup(data=train_data, target=target, session_id=100)
     model = create_model(regression_alg)  # bayesian ridge is most optimal according to compare_models()
-    return predict_model(estimator=model, data=test_data)
+    return model
 
+# prediction
+def predict(model, test_data,):
+    return predict_model(estimator=model, data=test_data)
 
 # plot actual and target popularity scores
 def plot_accuracy(predictions, print_predictions=True):
@@ -40,7 +42,12 @@ def plot_accuracy(predictions, print_predictions=True):
 
 if __name__ == '__main__':
     df = pd.read_csv('SpotifyFeatures.csv')
+    target = input("Enter Target Feature: ")
+    regression_alg = input("Enter Regression Algorithm: ")
+
     train_data, test_data = segment_dataset(df, random=True)
-    predictions = predict(train_data, test_data)
+    network = network(train_data, target) #If using python kernel/jupyter -> Must Run 'def network' block to reset model.
+    predictions = predict(network, test_data)
+
     plot_accuracy(predictions)
-    interpret_model(predictions)
+    interpret_model(network)
