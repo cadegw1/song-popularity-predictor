@@ -2,6 +2,7 @@
 from pycaret.regression import *
 import pandas as pd
 import matplotlib.pyplot as plt
+import shap
 
 SAMPLE_SIZE = 1000
 TEST_SIZE = 50
@@ -19,7 +20,7 @@ def segment_dataset(data, random=False):
 
 
 # create, train, and test network
-def predict(train_data, test_data, target='popularity', regression_alg='br'):
+def predict(train_data, test_data, target='popularity', regression_alg='dt'):
     setup(data=train_data, target=target, session_id=100)
     model = create_model(regression_alg)  # bayesian ridge is most optimal according to compare_models()
     return predict_model(estimator=model, data=test_data)
@@ -42,3 +43,4 @@ if __name__ == '__main__':
     train_data, test_data = segment_dataset(df, random=True)
     predictions = predict(train_data, test_data)
     plot_accuracy(predictions)
+    interpret_model(predictions)
