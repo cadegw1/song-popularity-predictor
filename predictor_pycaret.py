@@ -19,7 +19,7 @@ def segment_dataset(data, random=False):
     return sample, test
 
 # create, train, and test network
-def network(train_data, target, regression_alg='dt'):
+def network(train_data, target, regression_alg):
     setup(data=train_data, target=target, session_id=100)
     model = create_model(regression_alg)  # bayesian ridge is most optimal according to compare_models()
     return model
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     regression_alg = input("Enter Regression Algorithm: ")
 
     train_data, test_data = segment_dataset(df, random=True)
-    network = network(train_data, target) #If using python kernel/jupyter -> Must Run 'def network' block to reset model.
+    network = network(train_data, target, regression_alg) #If using python kernel/jupyter -> Must Run 'def network' block to reset model.
     predictions = predict(network, test_data)
 
     plot_accuracy(predictions)
