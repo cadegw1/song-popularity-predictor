@@ -44,10 +44,12 @@ if __name__ == '__main__':
     df = pd.read_csv('SpotifyFeatures.csv')
     target = input("Enter Target Feature: ")
     regression_alg = input("Enter Regression Algorithm: ")
+    interpret = input("Interpret Model (y,n)? ")
 
     train_data, test_data = segment_dataset(df, random=True)
     network = network(train_data, target, regression_alg) #If using python kernel/jupyter -> Must Run 'def network' block to reset model.
     predictions = predict(network, test_data)
 
     plot_accuracy(predictions)
-    interpret_model(network)
+    if interpret is 'y':
+        interpret_model(network)
