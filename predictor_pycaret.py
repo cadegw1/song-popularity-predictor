@@ -6,7 +6,7 @@ import shap
 
 SAMPLE_SIZE = 1000
 TEST_SIZE = 50
-
+IGNORE_FEATURES_LIST = ["genre","track_id","artist_name","track_name"]
 
 # segmenting dataset
 def segment_dataset(data, random=False):
@@ -20,7 +20,7 @@ def segment_dataset(data, random=False):
 
 # create, train, and test network
 def network(train_data, target, regression_alg):
-    setup(data=train_data, target=target, session_id=100)
+    setup(data=train_data, target=target, session_id=100, ignore_low_variance=True, ignore_features=IGNORE_FEATURES_LIST)
     model = create_model(regression_alg)  # bayesian ridge is most optimal according to compare_models()
     return model
 
