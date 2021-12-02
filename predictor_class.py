@@ -34,11 +34,10 @@ class SongPopularityPredictor:
         features = self.client.audio_features(id)
 
         # meta
-        name = meta['name']
-        album = meta['album']['name']
-        artist = meta['album']['artists'][0]['name']
-        release_date = meta['album']['release_date']
-        length = meta['duration_ms']
+        track_name = meta['name']
+        track_id = meta['id']
+        artist_name = meta['album']['artists'][0]['name']
+        duration_ms = meta['duration_ms']
         popularity = meta['popularity']
 
         # features
@@ -51,9 +50,12 @@ class SongPopularityPredictor:
         speechiness = features[0]['speechiness']
         tempo = features[0]['tempo']
         time_signature = features[0]['time_signature']
+        valence = features[0]['valence']
+        mode = features[0]['mode']
+        key = features[0]['key']
 
-        track = [name, album, artist, release_date, length, popularity, danceability, acousticness,
-                 energy, instrumentalness, liveness, loudness, speechiness, tempo, time_signature]
+        track = [artist_name, track_name, track_id, popularity, acousticness, danceability, duration_ms, energy,
+                 instrumentalness, key, liveness, loudness, mode, speechiness, tempo, time_signature, valence]
         return track
 
     def generate_dataset(self, size, ids, csv_name="dataset.csv"):
@@ -65,10 +67,10 @@ class SongPopularityPredictor:
             tracks.append(track)
 
         # create dataset
-        dataset = pd.DataFrame(tracks, columns=['name', 'album', 'artist', 'release_date', 'length', 'popularity',
-                                                'danceability', 'acousticness', 'danceability', 'energy',
-                                                'instrumentalness', 'liveness', 'loudness', 'speechiness', 'tempo',
-                                                'time_signature'])
+        dataset = pd.DataFrame(tracks, columns=['artist_name', 'track_name', 'track_id', 'popularity',
+                                                'acousticness', 'danceability', 'duration_ms', 'energy',
+                                                'instrumentalness', 'key', 'liveness', 'loudness', 'mode',
+                                                'speechiness', 'tempo', 'time_signature', 'valence'])
 
         # using pandas, write out dataset to .csv file
         dataset.to_csv(csv_name, sep=',')
