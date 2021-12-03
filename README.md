@@ -29,14 +29,8 @@
 
 <div align="center">
   <a href="https://www.lsu.edu/eng/cse/index.php">
-  <p>
-
-  ![ScreenShot](images/lsulogo.png)
-
-  </p>
+    <img src="images/lsulogo.PNG">
   </a>
-
-
 
 <h3 align="center">Predicting Song Popularity with Neural Networks</h3>
 
@@ -67,7 +61,6 @@
 - [License](#license)
 - [Contact](#contact)
 - [Acknowledgments](#acknowledgments)
-
 
 <!-- /TOC -->
 </details>
@@ -182,9 +175,6 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [issues-url]: https://github.com/cadegw1/song-popularity-predictor/issues
 [license-shield]: https://img.shields.io/github/license/cadegw1/song-popularity-predictor.svg?style=for-the-badge
 [license-url]: https://github.com/cadegw1/song-popularity-predictor/blob/main/LICENSE.txt
-[ScreenShot]: https://www.lsu.edu/eng/cse/index.php
-
-
 
 <!--
 MIT License
