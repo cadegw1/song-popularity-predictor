@@ -29,8 +29,12 @@
 
 <div align="center">
   <a href="https://www.lsu.edu/eng/cse/index.php">
-    <img src="images/lsulogo.png" alt="Logo" width="400" height="80">
+
+  ![ScreenShot](images/lsulogo.png)
+
   </a>
+
+
 
 <h3 align="center">Predicting Song Popularity with Neural Networks</h3>
 
@@ -62,6 +66,7 @@
 - [Contact](#contact)
 - [Acknowledgments](#acknowledgments)
 
+
 <!-- /TOC -->
 </details>
 
@@ -71,7 +76,7 @@
 ## About The Project
 
 
-The purpose of this project is to design and implement a song popularity predictor. The goal is to determine if the chance of a song becoming a hit can be calculated given certain metrics by using songs of varying degrees of success as a training dataset. Examples of song features that could be considered include song genre, tempo, year released, and artist familiarity. Some features will be classified by training, specifically genre. Others will be extracted from the Million Song Dataset, from which we will use to select songs for training and testing. We define success as becoming a Billboard Top 100 song. There are countless aspects that play into the success rate of a song, such as language or artist location; however, due to limitations, we are choosing features we believe will have the largest impact without overfitting the dataset. A song popularity predictor would give artists, record labels, and producers an estimated success rate of their song solely based on original characteristics like composition and artist.
+The purpose of this project is to design and implement a song popularity predictor. The goal is to determine if the chance of a song becoming a hit can be calculated using regression neural networks. Examples of song features that could be considered include song genre, tempo, and loudness. For training the network, both a custom-made dataset and a dataset called Spotify_Features pulled from an online source will be considered. There are countless aspects that play into the success rate of a song, such as language or artist location; however, due to limitations, we are investigating if we can remove low-impact features without noticeably affecting prediction accuracy. A song popularity predictor would give artists, record labels, and producers an estimated success rate of their song solely based on original characteristics of the audio itself.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -79,13 +84,13 @@ The purpose of this project is to design and implement a song popularity predict
 
 ### Built With
 
-* [Python 3.8](https://nextjs.org/)
-* [Pandas](https://reactjs.org/)
-* [Numpy](https://vuejs.org/)
-* [PyCaret](https://angular.io/)
-* [Spotipy](https://svelte.dev/)
-* [Matplotlib](https://laravel.com)
-* [Anaconda](https://getbootstrap.com)
+* [Python 3.8](https://www.python.org/downloads/release/python-380/)
+* [Pandas](https://pandas.pydata.org/)
+* [Numpy](https://numpy.org/)
+* [PyCaret](https://pycaret.org/)
+* [Spotipy](https://spotipy.readthedocs.io/en/2.19.0/)
+* [Matplotlib](https://matplotlib.org/)
+* [Anaconda](https://anaconda.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -149,7 +154,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/github_username/repo_name](https://github.com/cadegw1/song-popularity-predictor)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -173,8 +178,11 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [forks-url]: https://github.com/cadegw1/song-popularity-predictor/network/members
 [issues-shield]: https://img.shields.io/github/issues/cadegw1/song-popularity-predictor.svg?style=for-the-badge
 [issues-url]: https://github.com/cadegw1/song-popularity-predictor/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/cadegw1/song-popularity-predictor.svg?style=for-the-badge
+[license-url]: https://github.com/cadegw1/song-popularity-predictor/blob/main/LICENSE.txt
+[ScreenShot]: https://www.lsu.edu/eng/cse/index.php
+
+
 
 <!--
 MIT License
