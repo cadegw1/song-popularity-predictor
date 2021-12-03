@@ -8,6 +8,8 @@ SAMPLE_SIZE = 1000
 TEST_SIZE = 50
 IGNORE_FEATURES_LIST = ["track_id","artist_name","track_name"]
 
+
+
 # segmenting dataset
 def segment_dataset(data, random=False):
     if random is False:
@@ -42,10 +44,10 @@ def plot_accuracy(predictions, print_predictions=True):
 
 if __name__ == '__main__':
     df = pd.read_csv('SpotifyFeatures.csv')
-    target = input("Enter Target Feature: ")
-    regression_alg = input("Enter Regression Algorithm: ")
-    genre_ignore = input("Ignore Genre (y,n)? ")
-    interpret = input("Interpret Model (y,n)? ")
+    target = 'popularity' #Target Feature
+    regression_alg = 'dt'
+    genre_ignore = 'n' #can be (y,n)
+    interpret = 'y' #can be (y,n)
     if genre_ignore is 'y':
         IGNORE_FEATURES_LIST.append("genre")
 
