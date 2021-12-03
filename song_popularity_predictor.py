@@ -1,89 +1,59 @@
-# Aritifical Intelligence CSC-4444
-# Team 7 - Song Popularity Predictor
-# Dataset generation source code: https://morioh.com/p/31b8a607b2b0
-
-import spotipy as sp
-import os
-from spotipy.oauth2 import SpotifyClientCredentials
+from pycaret.regression import *
 import pandas as pd
-import time
+import matplotlib.pyplot as plt
 
-CLIENT_ID = os.environ['SPOTIPY_CLIENT_ID']
-CLIENT_SECRET = os.environ['SPOTIPY_CLIENT_SECRET']
-
-
-# Gets track IDs from a specified user and playlist
-def get_track_ids(user, playlist_id):
-    ids = []
-    playlist = sp.user_playlist(user, playlist_id)
-    tracks = playlist['tracks']
-    show_tracks(tracks, ids)
-    while tracks['next']:
-        tracks = sp.next(tracks)
-        show_tracks(tracks, ids)
-    return ids
+SAMPLE_SIZE = 1000
+TEST_SIZE = 50
 
 
-# Extends ids array
-def show_tracks(tracks, ids):
-    for i, item in enumerate(tracks['items']):
-        track = item ['track']
-        ids.append(track['id'])
+# Return list of track features from artist name and track name
+def get_song_features(self, artist, track):
+    track = self.client.search(q='artist:' + artist + ' track:' + track, type='track')
+    track_id = track['tracks']['items'][0]['id']
+    return self.get_track_features(track_id)
 
 
-# Gets track features for a specified track ID
-def get_track_features(id):
-    meta = sp.track(id)
-    features = sp.audio_features(id)
+# Segmenting dataset
+def segment_dataset(data, random=False):
+    if random is False:
+        sample = data.iloc[0:SAMPLE_SIZE, :]
+        test = data.iloc[SAMPLE_SIZE:SAMPLE_SIZE + TEST_SIZE, :]
+    else:
+        sample = data.sample(n=SAMPLE_SIZE)
+        test = data.sample(n=TEST_SIZE)
+    return sample, test
 
-    # meta
-    name = meta['name']
-    album = meta['album']['name']
-    artist = meta['album']['artists'][0]['name']
-    release_date = meta['album']['release_date']
-    length = meta['duration_ms']
-    popularity = meta['popularity']
 
-    # features
-    acousticness = features[0]['acousticness']
-    danceability = features[0]['danceability']
-    energy = features[0]['energy']
-    instrumentalness = features[0]['instrumentalness']
-    liveness = features[0]['liveness']
-    loudness = features[0]['loudness']
-    speechiness = features[0]['speechiness']
-    tempo = features[0]['tempo']
-    time_signature = features[0]['time_signature']
+# Create, train, and test network
+def network(train_data, target, regression_alg):
+    setup(data=train_data, target=target, session_id=100, ignore_low_variance=True)
+    model = create_model(regression_alg)  # bayesian ridge is most optimal according to compare_models()
+    return model
 
-    track = [name, album, artist, release_date, length, popularity, danceability, acousticness, danceability, energy,
-             instrumentalness, liveness, loudness, speechiness, tempo, time_signature]
-    return track
+
+# Plot actual and target popularity scores
+def plot_accuracy(predictions, print_predictions=True):
+    predictions['row_column'] = predictions.reset_index().index
+    if print_predictions:
+        print(predictions[['popularity', 'Label', 'row_column']].head(TEST_SIZE))
+    predictions.plot(x='row_column', y=['popularity', 'Label'])    # Label represents predicted values
+    plt.xlabel("# of samples")
+    plt.ylabel("popularity")
+    plt.legend(['actual', 'predicted'])
+    plt.show()
 
 
 if __name__ == '__main__':
-    client_credentials_manager = SpotifyClientCredentials(CLIENT_ID, CLIENT_SECRET)
-    sp = sp.Spotify(client_credentials_manager=client_credentials_manager)
+    df = pd.read_csv('SpotifyFeatures.csv')
+    target = 'popularity'   # Target Feature
+    regression_alg = 'br'
+    interpret = True
 
-    # Example playlist: 1,948 songs can add more to tailor dataset
-    ids = get_track_ids('Ben', '6QAKnenuZoowNqxRzZbeRg?si=ca2f98299f464f57')
+    train_data, test_data = segment_dataset(df, random=True)
+    network = network(train_data, target, regression_alg)
+    predictions = predict_model(estimator=network, data=test_data)
 
-    # Generate dataset based on ids defined above
-
-    # loop over track ids
-    tracks = []
-    # Note: Now that ids gets the full range of songs, it takes a while to run,
-    # the example playlist took about 12.5 minutes to run
-    for i in range(len(ids)):
-        time.sleep(.2)
-        track = get_track_features(ids[i])
-        tracks.append(track)
-
-    # create dataset
-    dataset = pd.DataFrame(tracks, columns=['name', 'album', 'artist', 'release_date', 'length', 'popularity',
-                                            'danceability', 'acousticness', 'danceability', 'energy',
-                                            'instrumentalness', 'liveness', 'loudness', 'speechiness', 'tempo',
-                                            'time_signature'])
-
-    # using pandas, write out dataset to .csv file
-    dataset.to_csv("dataset.csv", sep=',')
+    plot_accuracy(predictions)
+    if interpret is True:
+        interpret_model(network)
 
