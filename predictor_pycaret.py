@@ -6,7 +6,7 @@ import shap
 
 SAMPLE_SIZE = 1000
 TEST_SIZE = 50
-IGNORE_FEATURES_LIST = ["genre","track_id","artist_name","track_name"]
+IGNORE_FEATURES_LIST = ["track_id","artist_name","track_name"]
 
 # segmenting dataset
 def segment_dataset(data, random=False):
@@ -44,7 +44,10 @@ if __name__ == '__main__':
     df = pd.read_csv('SpotifyFeatures.csv')
     target = input("Enter Target Feature: ")
     regression_alg = input("Enter Regression Algorithm: ")
+    genre_ignore = input("Ignore Genre (y,n)? ")
     interpret = input("Interpret Model (y,n)? ")
+    if genre_ignore is 'y':
+        IGNORE_FEATURES_LIST.append("genre")
 
     train_data, test_data = segment_dataset(df, random=True)
     network = network(train_data, target, regression_alg) #If using python kernel/jupyter -> Must Run 'def network' block to reset model.
