@@ -15,9 +15,9 @@ def authorize():
 
 
 # Return list of features for a given track
-def get_track_features(self, id):
-    meta = self.client.track(id)
-    features = self.client.audio_features(id)
+def get_track_features(client, id):
+    meta = client.track(id)
+    features = client.audio_features(id)
 
     # meta
     track_name = meta['name']
@@ -54,24 +54,23 @@ def show_tracks(tracks, ids):
 
 
 # Gets track IDs from a specified user and playlist
-def get_track_ids(user, playlist_id):
+def get_track_ids(client, user, playlist_id):
     ids = []
-    playlist = sp.user_playlist(user, playlist_id)
+    playlist = client.user_playlist(user, playlist_id)
     tracks = playlist['tracks']
     show_tracks(tracks, ids)
     while tracks['next']:
-        tracks = sp.next(tracks)
+        tracks = client.next(tracks)
         show_tracks(tracks, ids)
     return ids
 
 
 # Generate dataset and put it into a csv
-def generate_dataset(self, size, ids, csv_name="dataset.csv"):
+def generate_dataset(client, size, ids, csv_name="dataset.csv"):
     print("Creating dataset ...")
     tracks = []
     for i in range(size):
-        # time.sleep(.2)
-        track = self.get_track_features(ids[i])
+        track = get_track_features(client, ids[i])
         tracks.append(track)
 
     # create dataset
@@ -86,13 +85,7 @@ def generate_dataset(self, size, ids, csv_name="dataset.csv"):
 
 if __name__ == '__main__':
     client = authorize()
-    ids = get_track_ids('Ben', '6QAKnenuZoowNqxRzZbeRg?si=ca2f98299f464f57')
-    tracks = []
-    for i in range(len(ids)):
-        track = get_track_features(ids[i])
-        tracks.append(track)
-    dataset = pd.DataFrame(tracks, columns=['name', 'album', 'artist', 'release_date', 'length', 'popularity',
-                                            'danceability', 'acousticness', 'danceability', 'energy',
-                                            'instrumentalness', 'liveness', 'loudness', 'speechiness', 'tempo',
-                                            'time_signature'])
-    dataset.to_csv("dataset.csv", sep=',')
+    ids = get_track_ids(client, 'Ben', '6QAKnenuZoowNqxRzZbeRg?si=ca2f98299f464f57')
+    dataset_size = 100
+    csv_name = 'dataset.csv'
+    generate_dataset(client, dataset_size, ids, csv_name)
