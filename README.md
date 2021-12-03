@@ -29,9 +29,11 @@
 
 <div align="center">
   <a href="https://www.lsu.edu/eng/cse/index.php">
+  <p>
 
   ![ScreenShot](images/lsulogo.png)
 
+  </p>
   </a>
 
 
