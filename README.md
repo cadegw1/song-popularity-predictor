@@ -167,11 +167,11 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/cadegw1/song-popularity-predictor.svg?style=for-the-badge
 [contributors-url]: https://github.com/cadegw1/song-popularity-predictor/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/cadegw1/song-popularity-predictor.svg?style=for-the-badge
 [forks-url]: https://github.com/cadegw1/song-popularity-predictor/network/members
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/cadegw1/song-popularity-predictor.svg?style=for-the-badge
 [issues-url]: https://github.com/cadegw1/song-popularity-predictor/issues
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
