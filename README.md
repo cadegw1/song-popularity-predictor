@@ -17,12 +17,14 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+<div align="center">
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-
+</div>
 
 <!-- PROJECT LOGO -->
 <br />
@@ -36,11 +38,9 @@
 
   <p align="center">
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/cadegw1/song-popularity-predictor/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/cadegw1/song-popularity-predictor/issues">Request Feature</a>
   </p>
 </div>
 
@@ -149,7 +149,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/cadegw1/song-popularity-predictor)
+Project Link: [https://github.com/cadegw1/song-popularity-predictor](https://github.com/cadegw1/song-popularity-predictor)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
