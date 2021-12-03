@@ -27,10 +27,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+<p>
   <a href="https://www.lsu.edu/eng/cse/index.php">
     <img src="images/lsulogo.png" alt="Logo" width="400" height="80">
   </a>
-
+</p>
 <h3 align="center">Predicting Song Popularity with Neural Networks</h3>
 
   <p align="center">
