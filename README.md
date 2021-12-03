@@ -26,19 +26,15 @@
 
 <!-- PROJECT LOGO -->
 <br />
+
 <div align="center">
-<p>
   <a href="https://www.lsu.edu/eng/cse/index.php">
     <img src="images/lsulogo.png" alt="Logo" width="400" height="80">
   </a>
-</p>
+
 <h3 align="center">Predicting Song Popularity with Neural Networks</h3>
 
   <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
     <br />
     <a href="https://github.com/github_username/repo_name">View Demo</a>
     ·
@@ -176,10 +172,10 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
 [forks-url]: https://github.com/cadegw1/song-popularity-predictor/network/members
 [issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
+[issues-url]: https://github.com/cadegw1/song-popularity-predictor/issues
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[product-screenshot]: images/screenshot.png
+
 <!--
 MIT License
 
