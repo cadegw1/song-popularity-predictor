@@ -28,7 +28,7 @@
 <br />
 <div align="center">
   <a href="https://www.lsu.edu/eng/cse/index.php">
-    <img src="images/lsulogo.png" alt="Logo" width="4000" height="80">
+    <img src="images/lsulogo.png" alt="Logo" width="400" height="80">
   </a>
 
 <h3 align="center">Predicting Song Popularity with Neural Networks</h3>
@@ -73,7 +73,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 The purpose of this project is to design and implement a song popularity predictor. The goal is to determine if the chance of a song becoming a hit can be calculated given certain metrics by using songs of varying degrees of success as a training dataset. Examples of song features that could be considered include song genre, tempo, year released, and artist familiarity. Some features will be classified by training, specifically genre. Others will be extracted from the Million Song Dataset, from which we will use to select songs for training and testing. We define success as becoming a Billboard Top 100 song. There are countless aspects that play into the success rate of a song, such as language or artist location; however, due to limitations, we are choosing features we believe will have the largest impact without overfitting the dataset. A song popularity predictor would give artists, record labels, and producers an estimated success rate of their song solely based on original characteristics like composition and artist.
 
