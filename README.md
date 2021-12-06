@@ -152,7 +152,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ### Contributors
 
 **Armando Castillo III** <br />
-Github profile - https://github.com/ArmandoCIII
+Github profile - https://github.com/ArmandoCIII <br />
+Secondary profile - https://github.com/armycastillo
 
 **Cade Williams** <br />
 Github profile - https://github.com/cadegw1
