@@ -149,7 +149,22 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/cadegw1/song-popularity-predictor](https://github.com/cadegw1/song-popularity-predictor)
+### Contributors
+
+**Armando Castillo III** <br />
+Github profile - https://github.com/ArmandoCIII
+
+**Cade Williams** <br />
+Github profile - https://github.com/cadegw1
+
+**Hayden Gemeinhardt** <br />
+Github profile - https://github.com/haydengemeinhardt
+
+**Lauren Chauvin** <br />
+Github profile - https://github.com/lchauvin03
+
+**Carson Hymel** <br />
+Github profile - https://github.com/Chymel
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
