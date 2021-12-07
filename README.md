@@ -94,46 +94,64 @@ The purpose of this project is to design and implement a song popularity predict
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+If you plan to run the program with anaconda then please skip to the [Anaconda Setup](#anaconda-setup).
 
 ### Prerequisites
+Cloning the git repo
+```sh
+git clone https://github.com/cadegw1/song-popularity-predictor.git
+```
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+
+A spotify developer account is required and can be created [here](https://developer.spotify.com/).
+1. In the dashboard, create a new app.
+
+2. Copy the 'Client Id' and 'Client Secret'.
+
+3. Create two environment variables called 'SPOTIPY_CLIENT_ID' and 'SPOTIPY_CLIENT_SECRET' containing the copied values of 'Client Id' and 'Client Secret'.
+
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+1. All packages can be installed using pip. Links to packages used can be found [here](#built-with)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ### Anaconda Setup
+Cloning the git repo
+```sh
+git clone https://github.com/cadegw1/song-popularity-predictor.git
+```
 
+An environment.yml file has been provided for anaconda implementation.
+1. Follow steps 1 and 2 in the [Prerequisites](#prerequisites) to obtain a 'Client Id' and 'Client Secret'.
 
+2. In the environment.yml file, paste the copied values in the variables section
+```yml
+variables:
+    SPOTIPY_CLIENT_ID:
+    SPOTIPY_CLIENT_SECRET:
+```
+
+3. Create a new anaconda env using the environment.yml
+```sh
+conda env create -f environment.yml
+```
+
+4. Activate the anaconda env
+```sh
+conda activate csc4444_SemProj
+```
+
+For more in-depth instructions using anaconda please refer to the [documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+This is a conceptual implementation of how to predict a songs popularity using Spotify features. Examples of real world use would be a producer or artist estimating their songs predicted popularity.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -173,9 +191,9 @@ Github profile - https://github.com/Chymel
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [How to Extract Data Using Spotify's API, Python and Spotipy](https://morioh.com/p/31b8a607b2b0)
+* [potify Tracks DB](https://www.kaggle.com/zaheenhamidani/ultimate-spotify-tracks-db)
+* [Ignore Low Variance](https://pycaret.org/ignore-low-variance/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -214,44 +232,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
--->
-
-<!-- --------------------------------------------------------------------------- -->
-
-<!--
-# <div align="center">Artificial Intelligence - CSC4444
-###### <div align="center">Group 7<br /> Members: Armando Castillo, Cade Williams, Lauren Chauvin, Timothy Curol, Hayden Gemeinhardt, Carson Hymel<br />Dr.
-
-
-Summary:
-    Repo contains two files: generate_dataset.py and song_popularity_predictor.py. The dataset generation script allows
-    the user to pull songs and their feature sets from playlists. The song popularity predictor will use the generated
-    dataset to train and test its regression network.
-
-Required packages:
-    - pandas
-    - spotipy
-    - pycaret
-    - matplotlib
-
-Included datasets:
-    dataset.csv - Set containing 1949 samples from a playlist containing random songs
-    SpotifyFeatures.csv - Set containing 228160 random samples from different genres
-
-Feature set:
-    - popularity (target)
-    - genre (only included in the SpotifyFeatures dataset)
-    - acousticness
-    - danceability
-    - duration_ms
-    - energy
-    - instrumentalness
-    - key
-    - liveness
-    - loudness
-    - mode
-    - speechiness
-    - temp
-    - time_signature
-    - valence
 -->
