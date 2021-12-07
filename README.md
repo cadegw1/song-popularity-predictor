@@ -94,15 +94,9 @@ The purpose of this project is to design and implement a song popularity predict
 <!-- GETTING STARTED -->
 ## Getting Started
 
-If you plan to run the program with anaconda then please skip to the [Anaconda Setup](#anaconda-setup).
+First, fork the repository [here](https://github.com/cadegw1/song-popularity-predictor). If you plan to run the program with anaconda then please skip to the [Anaconda Setup](#anaconda-setup).
 
 ### Prerequisites
-Cloning the git repo
-```sh
-git clone https://github.com/cadegw1/song-popularity-predictor.git
-```
-
-
 A spotify developer account is required and can be created [here](https://developer.spotify.com/).
 1. In the dashboard, create a new app.
 
@@ -120,11 +114,6 @@ A spotify developer account is required and can be created [here](https://develo
 
 
 ### Anaconda Setup
-Cloning the git repo
-```sh
-git clone https://github.com/cadegw1/song-popularity-predictor.git
-```
-
 An environment.yml file has been provided for anaconda implementation.
 1. Follow steps 1 and 2 in the [Prerequisites](#prerequisites) to obtain a 'Client Id' and 'Client Secret'.
 
@@ -192,7 +181,7 @@ Github profile - https://github.com/Chymel
 ## Acknowledgments
 
 * [How to Extract Data Using Spotify's API, Python and Spotipy](https://morioh.com/p/31b8a607b2b0)
-* [potify Tracks DB](https://www.kaggle.com/zaheenhamidani/ultimate-spotify-tracks-db)
+* [Spotify Tracks DB](https://www.kaggle.com/zaheenhamidani/ultimate-spotify-tracks-db)
 * [Ignore Low Variance](https://pycaret.org/ignore-low-variance/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
