@@ -2,8 +2,8 @@ from pycaret.regression import *
 import pandas as pd
 import matplotlib.pyplot as plt
 
-SAMPLE_SIZE = 1000
-TEST_SIZE = 50
+SAMPLE_SIZE = 2000
+TEST_SIZE = 25
 
 
 # Return list of track features from artist name and track name
@@ -32,28 +32,37 @@ def network(train_data, target, regression_alg):
 
 
 # Plot actual and target popularity scores
-def plot_accuracy(predictions, print_predictions=True):
-    predictions['row_column'] = predictions.reset_index().index
-    if print_predictions:
-        print(predictions[['popularity', 'Label', 'row_column']].head(TEST_SIZE))
-    predictions.plot(x='row_column', y=['popularity', 'Label'])    # Label represents predicted values
+def plot_accuracy(predictions, labels, print_predictions=True, grid=False):
+    plot_data = pd.DataFrame({'row_column': [*range(0, TEST_SIZE)]})
+    plot_data['popularity'] = predictions[0]['popularity'].values
+    for i in range(len(predictions)):
+        plot_data[labels[i]] = predictions[i]['Label'].values
+        if print_predictions:
+            print(predictions[i][['popularity', 'Label']].head(TEST_SIZE))
+    ax = plot_data.plot(x='row_column', y='popularity', linewidth=2)
+    plot_data.plot(ax=ax, y=labels, linewidth=0.5)
     plt.xlabel("# of samples")
     plt.ylabel("popularity")
-    plt.legend(['actual', 'predicted'])
+    plt.legend(['actual'] + labels)
+    if grid:
+        ax.set_xticks(*[range(0, TEST_SIZE)])
+        plt.grid(visible=True)
     plt.show()
 
 
 if __name__ == '__main__':
     df = pd.read_csv('SpotifyFeatures.csv')
     target = 'popularity'   # Target Feature
-    regression_alg = 'br'
-    interpret = True
+    regression_alg = ['br', 'rf', 'knn', 'dt']  # Must be a list of at least one element
+    interpret = False
 
+    predictions = []
     train_data, test_data = segment_dataset(df, random=True)
-    network = network(train_data, target, regression_alg)
-    predictions = predict_model(estimator=network, data=test_data)
+    for alg in regression_alg:
+        net = network(train_data, target, alg)
+        predictions.append(predict_model(estimator=net, data=test_data))
 
-    plot_accuracy(predictions)
+    plot_accuracy(predictions, regression_alg, print_predictions=False, grid=True)
     if interpret is True:
         interpret_model(network)
 
